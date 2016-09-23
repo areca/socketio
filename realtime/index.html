@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Realtime App using Express - Socket.io</title>
+</head>
+<body>
+  <!-- Also load the Socket.io client side javascript dependency in your
+ index.html. Here, we are loading the script from the cloudflare cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+  <script type="text/javascript">
+
+    // get the socket instance for this client
+    var socket = io.connect();
+
+    // Receive an event named 'welcome' from the server
+    // and print the data to the browser console.
+    socket.on('welcome', function(data) {
+      console.log(data);
+
+      // emit a new event named 'thanks' to the server.
+      socket.emit('thanks', 'You will do great things!');
+    });
+
+  </script>
+</body>
+</html>
